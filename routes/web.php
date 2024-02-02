@@ -3,22 +3,24 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', function () {return view('welcome');});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/produtos', [App\Http\Controllers\ProdutoController::class, 'index'])->name('produtos');
+Route::prefix('/app')->group(function(){
+    Route::get('/produtos', [App\Http\Controllers\ProdutoController::class, 'index'])->name('produtos');
+    Route::get('/produtos/novo', [App\Http\Controllers\ProdutoController::class, 'create'])->name('produtos.create');
+
+   
+    Route::post('/produtos', [App\Http\Controllers\ProdutoController::class, 'store'])->name('produtos.store');
+    Route::get('/produtos/editar/{id}', [App\Http\Controllers\ProdutoController::class, 'edit'])->name('produtos.edit');
+    Route::put('/produtos/update/{id}', [App\Http\Controllers\ProdutoController::class, 'update'])->name('produtos.update');
+    Route::get('/produtos/deletar/{id}', [App\Http\Controllers\ProdutoController::class, 'destroy'])->name('produtos.destroy');
+});
+
+// Route::get('/produtos', [App\Http\Controllers\ProdutoController::class, 'index'])->name('produtos');
+// Route::get('/produtos/novo', [App\Http\Controllers\ProdutoController::class, 'create'])->name('produtos.create');

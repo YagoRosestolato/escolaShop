@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($produto as $produto)
+                    {{--  @foreach ($produto as $produto)
                         <tr>
                             <td>{{ $produto->id }}</td>
                             <td>{{ $produto->name }}</td>
@@ -26,7 +26,7 @@
                                 <a href="/produtos/apagar/{{ $produto->id }}" class="btn btn-danger">Excluir</a>
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach  --}}
                 </tbody>
             </table>
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Produto;
+
 
 class ProdutoController extends Controller
 {
@@ -19,7 +21,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('novoProduto');
     }
 
     /**
@@ -27,7 +29,13 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $prod = new Produto();
+        $prod->name = $request->input('name');
+        $prod->description = $request->input('description');
+        $prod->price = $request->input('price');
+        $prod->save();
+
+
     }
 
     /**

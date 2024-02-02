@@ -18,7 +18,7 @@
         @if (Route::has('login'))
             <div class="text-center">
                 @auth
-                    <a href="{{ url('/home') }}" class="btn btn-primary mt-3">Home</a>
+                    <a href="{{ url('home') }}" class="btn btn-primary mt-3">Home</a>
                 @else
                     <a href="{{ route('login') }}" class="btn btn-primary mt-3">Log in</a>
                     @if (Route::has('register'))
