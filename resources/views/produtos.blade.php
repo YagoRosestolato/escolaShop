@@ -15,24 +15,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{--  @foreach ($produto as $produto)
+                    @foreach ($produtos as $produtos)
                         <tr>
-                            <td>{{ $produto->id }}</td>
-                            <td>{{ $produto->name }}</td>
-                            <td>{{ $produto->description }}</td>
-                            <td>R$ {{ number_format($produto->price, 2, ',', '.') }}</td>
+                            <td>{{ $produtos->id }}</td>
+                            <td>{{ $produtos->name }}</td>
+                            <td>{{ $produtos->description }}</td>
+                            <td>R$ {{ number_format($produtos->price, 2, ',', '.') }}</td>
                             <td>
-                                <a href="/produtos/editar/{{ $produto->id }}" class="btn btn-primary">Editar</a>
-                                <a href="/produtos/apagar/{{ $produto->id }}" class="btn btn-danger">Excluir</a>
+                                <a href="/app/produtos/editar/{{ $produtos->id }}" class="btn btn-primary">Editar</a>
+                                <a href="/app/produtos/apagar/{{ $produtos->id }}" class="btn btn-danger">Excluir</a>
                             </td>
                         </tr>
-                    @endforeach  --}}
+                    @endforeach
                 </tbody>
             </table>
 
             <div class="text-center">
-                <a href="/diretor" class="btn btn-primary mb-2">Voltar</a><br>
-                <a href="/produtos/novo" class="btn btn-success mb-2">Cadastrar Novo Produto</a><br>
+                <a href="/home" class="btn btn-primary mb-2">Voltar</a><br>
+                <a href="/app/produtos/novo" class="btn btn-success mb-2">Cadastrar Novo Produto</a><br>
             </div>
         </div>
     </div>

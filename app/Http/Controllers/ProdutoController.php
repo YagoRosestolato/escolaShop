@@ -13,7 +13,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        return view('produtos');
+        $produtos = Produto::all();
+        return view('produtos', compact('produtos'));
     }
 
     /**
@@ -29,6 +30,16 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+        ], [
+            'name.required' => 'Este campo é obrigatório',
+            'description.required' => 'Este campo é obrigatório',
+            'price.required' => 'Este campo é obrigatório',
+        ]);
+
         $prod = new Produto();
         $prod->name = $request->input('name');
         $prod->description = $request->input('description');
@@ -59,7 +70,15 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $prod = Produto::find($id);
+        if (isset($prod)) {
+            $prod->name = $request->input('name');
+            $prod->description = $request->input('description');
+            $prod->price = $request->input('price');
+            $prod->save();
+        }
+
+        return redirect('/app/produtos');
     }
 
     /**
@@ -67,6 +86,10 @@ class ProdutoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $prod = Produto::find($id);
+        if (isset($prod)) {
+            $prod->delete();
+            return redirect('/app/produtos');
+        }
     }
 }
