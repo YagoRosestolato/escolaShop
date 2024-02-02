@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class DiretorController extends Controller
@@ -11,7 +12,8 @@ class DiretorController extends Controller
      */
     public function index()
     {
-        return view('diretor');
+        $produto = Produto::all();
+        return view('diretor', compact('produto'));
     }
 
     /**
