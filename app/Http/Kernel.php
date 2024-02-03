@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         'log.acesso' => \App\Http\Middleware\LogAcessoMiddleware::class,
         'autenticacao' => \App\Http\Middleware\AutenticacaoMiddlewate::class,
         'role' => \App\Http\Middleware\RoleMiddleware::class,
+        'autenticado' => \App\Http\Middleware\Authenticated::class,
 
      
     ];

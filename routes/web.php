@@ -14,7 +14,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::prefix('/app')->group(function () {
+Route::middleware(['autenticado', 'log.acesso'])->prefix('/app')->group(function () {
 
     Route::get('/produtos', [App\Http\Controllers\ProdutoController::class, 'index'])->name('produtos');
     Route::get('/produtos/novo', [App\Http\Controllers\ProdutoController::class, 'create'])->name('produtos.create');
