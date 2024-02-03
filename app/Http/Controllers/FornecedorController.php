@@ -9,6 +9,13 @@ class FornecedorController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function __construct(){
+    //     $this->middleware('fornecedor');
+    // }
+   
+
+
+
     public function index()
     {
         return view('fornecedor');

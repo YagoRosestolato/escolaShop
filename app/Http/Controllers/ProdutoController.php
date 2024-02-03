@@ -78,7 +78,7 @@ class ProdutoController extends Controller
             $prod->save();
         }
 
-        return redirect('/app/produtos');
+        return redirect('/app/produtos')->with('success', 'Produto atualizado com sucesso!');
     }
 
     /**
