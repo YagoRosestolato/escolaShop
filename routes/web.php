@@ -26,11 +26,11 @@ Route::prefix('/app')->group(function () {
 
     Route::middleware(['autenticacao', 'auth', 'role:diretor'])->group(function () {
         Route::get('/diretor', [App\Http\Controllers\DiretorController::class, 'index'])->name('app.diretor');
-        // Adicione outras rotas específicas do diretor, se necessário
+      
     });
     Route::middleware(['autenticacao', 'auth', 'role:fornecedor'])->group(function () {
         Route::get('/fornecedor', [App\Http\Controllers\FornecedorController::class, 'index'])->name('app.fornecedor');
-        // Adicione outras rotas específicas do fornecedor, se necessário
+  
     });
 });
 
